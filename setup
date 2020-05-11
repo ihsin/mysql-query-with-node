@@ -1,0 +1,41 @@
+
+
+*****Add epel to yum*****
+wget --no-check-certificate https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+cat>> /etc/yum.conf
+sslverify=false
+rpm -evv epel-release-7-12.noarch
+rpm -ivh epel-release-latest-7.noarch.rpm
+yum repolist
+
+*****Install npm and nodejs*****
+yum install npm nodejs
+
+******As there are ssl issues for VSCode and it's too slow on VM as well so try ssh from host(Windows) VScode*****
+Install extension: Remote SSH 
+#npm set strict-ssl false {removing ssl problem for npm as well}
+#npm install express mysql
+
+******Install and start mysql server*****
+wget --no-check-certificate https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+rpm -ivh mysql80-community-release-el7-1.noarch.rpm
+yum repolist
+yum install mysql-server
+systemctl start mysqld
+Use temp password which is created:
+grep 'password' /var/log/mysqld.log
+mysql -p
+
+*****change password, without change you can't execute any statements.*****
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'Root@123';
+Even after this client(npm installation of mysql) could not connect to server;
+Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client.
+This is because caching_sha2_password is introduced in MySQL 8.0, but the Node.js version is not implemented yet.
+execute below statements
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Root@123'
+mysql> flush privileges;
+
+*****Install other extentions on VSCode*****
+REST client
+ESLint
+Beautify
