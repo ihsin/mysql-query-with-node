@@ -4,7 +4,8 @@
     color: white; /* White text */
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
+    float: center; /* Float the buttons side by side */
+    margin-right: auto;
   }
   
   .btn-group button:not(:last-child) {
@@ -25,4 +26,16 @@
 
   .btn-group {
     position: center;
+  }
+
+  body{
+    background-image: url("../pictures/plain-white-blurred-background-vector.jpg");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+    text-align: center;
+  }
+
+  h2{
+    font-family: cursive;
   }
