@@ -1,0 +1,17 @@
+<h3 style="margin-top:5em;color:black">Table Team</h3>
+<div class="view">
+    <div class="div-table">
+        <div class="div-table-row-head">
+            <div class="div-table-col" style="width:10%">ID</div>
+            <div class="div-table-col" style="width:30%">Title</div>
+            <div class="div-table-col" style="width:60%">Summary</div>
+        </div>
+        <% table.forEach(row => { %>
+            <div class="div-table-row">
+                <div class="div-table-col" style="width:10%"><%= row.ID %> </div>
+                <div class="div-table-col" style="width:30%"><%= row.Title %></div>
+                <div class="div-table-col" style="width:60%"><%= row.Summary %> </div>
+            </div>
+        <% }) %> 
+    </div>
+</div>
