@@ -45,23 +45,23 @@ app.get('/createtableteam', (req,res) => {
 })
 
 //Insert
-app.get('/insertteam', (req,res) => {
+app.get('/add', (req,res) => {
     let team = {Title: 'DevOps Team', Summary: ' combines software development and IT operations'}
     const sql = "INSERT INTO Teams SET ?";
     db.query(sql, team, (err, result) => {
         if (err) throw err;
         console.log(result);
-        res.send('Table row inserted');
+        res.render('add');
     })
 })
 
 //Select
-app.get('/selectteam', (req,res) => {
+app.get('/view', (req,res) => {
     const sql = "SELECT * FROM Teams";
     db.query(sql, (err, result) => {
         if (err) throw err;
-        console.log(result);
-        res.send(result);
+        console.log(result[0].Title);
+        res.render('view',{table : result});
     })
 })
 
