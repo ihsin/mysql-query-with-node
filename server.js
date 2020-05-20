@@ -7,6 +7,8 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
+app.use(express.json())
+app.use(express.urlencoded())
 const db = mysql.createConnection({
     host    : 'localhost',
     user    : 'root',
@@ -45,14 +47,18 @@ app.get('/createtableteam', (req,res) => {
 })
 
 //Insert
-app.get('/add', (req,res) => {
-    let team = {Title: 'DevOps Team', Summary: ' combines software development and IT operations'}
+app.post('/add', (req,res) => {
+    let team = {Title: req.body.title, Summary: req.body.summary}
     const sql = "INSERT INTO Teams SET ?";
     db.query(sql, team, (err, result) => {
         if (err) throw err;
         console.log(result);
         res.render('add');
     })
+})
+
+app.get('/add', (req,res) => {
+    res.render('add');
 })
 
 //Select
