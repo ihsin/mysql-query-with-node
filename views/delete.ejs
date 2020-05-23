@@ -1,0 +1,23 @@
+
+<div class="container">
+    <h2>Delete an existing Team</h2>
+    <label for="teamid"> <span id="spanid">ID&nbsp;</span>
+        <select name="teamid" id="teamid" style="width:60px;">
+            <option class="option" value="1" id="option1" style="justify-content: center;">1</optiion> 
+            <option class="option" value="2" id="option2">2</optiion> 
+            <option class="option" value="3" id="option3">3</optiion> 
+            <option class="option" value="4" id="option4">4</optiion> 
+            <option class="option" value="5" id="option5">5</optiion>
+        </select>
+    </label>
+    <button onclick="printMsg()">Delete</button>
+    <p id="msg"></p>
+</div>
+
+<script>
+    function printMsg(){
+        let e = document.getElementById("teamid");
+        let selectedValue = e.options[e.selectedIndex].value;
+        document.getElementById('msg').innerText = 'Record with ID '+ selectedValue +' has been deleted'
+    }
+</script>
