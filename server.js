@@ -71,6 +71,9 @@ app.get('/view', (req,res) => {
     })
 })
 
+app.get('/delete', (req, res) =>{
+    res.render('delete');
+})
 
 app.listen(3000, () => {
     console.log("Running on port 3000")

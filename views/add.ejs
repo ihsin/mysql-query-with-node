@@ -1,6 +1,10 @@
-<h2>New Team</h2>
 <form action="/add" method="POST">
-  <%- include('_form_fields') %>
-  <a href="/">Cancel</a>
-  <button type="submit">Add Team</button>
+  <div class="container">
+    <h2 class="h2"> Add a New Team</h2>
+    <%- include('_form_fields') %>
+    <div id="addbuttons">
+      <a id="canceladd" href="/">Cancel</a>
+      <button type="submit">Add Team</button>
+    </div>
+  </div>
 </form>

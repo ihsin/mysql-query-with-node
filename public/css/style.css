@@ -9,12 +9,6 @@ body{
   color: black;
 }
 
-h2{
-  font-family: cursive;
-  margin: 0;
-  color: black;
-  
-}
 
 header{
   background-image: url("../pictures/header.jpeg");
@@ -86,11 +80,11 @@ a {
   display: table-column;
 }
 
-#container{
-  width: 40%;
+.container{
+  width: 100%;
   margin: auto;
   position: relative;
-  top: 2em;
+  top: 4em;
 }
 
 label{
@@ -104,7 +98,7 @@ label{
   color: teal;
 }
 
-#h2add{
+h2{
   width: 20%;
   margin: 20px auto;
 }
@@ -121,7 +115,7 @@ label{
   background-color: snow;
 }
 
-#buttonadd{
+button{
   border: 2px solid gray;
   color: blue;
   background-color: wheat;
@@ -130,10 +124,17 @@ label{
   cursor: pointer;
 }
 
-#buttonadd:hover{
+button:hover{
   background-color: snow;
 }
 
-#addbuttons{
+button{
   padding: 10px 10px;
+}
+
+#spanid{
+  font-style: oblique;
+  border: 2px solid red;
+  width: 100%;
+  margin: 0 auto;
 }
