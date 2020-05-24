@@ -1,18 +1,18 @@
 
-<div class="container">
-    <h2>Delete an existing Team</h2>
-    <label for="teamid"> <span id="spanid">ID&nbsp;</span>
-        <select name="teamid" id="teamid" style="width:60px;">
-            <option class="option" value="1" id="option1" style="justify-content: center;">1</optiion> 
-            <option class="option" value="2" id="option2">2</optiion> 
-            <option class="option" value="3" id="option3">3</optiion> 
-            <option class="option" value="4" id="option4">4</optiion> 
-            <option class="option" value="5" id="option5">5</optiion>
-        </select>
-    </label>
-    <button onclick="printMsg()">Delete</button>
-    <p id="msg"></p>
-</div>
+<form action="/delete" method="POST">
+    <div class="container">
+        <h2>Delete an existing Team</h2>
+        <label for="teamid"> <span id="spanid">ID&nbsp;</span>
+            <select name="teamid" id="teamid" style="width:60px;">
+               <% ids.forEach(id => { %>
+                <option class="option" value="<%= id.ID %>"> <%= id.ID %>  </optiion>
+               <% }); %>
+            </select>
+        </label>
+        <button type="submit" onclick="printMsg()">Delete</button>
+        <p id="msg"></p>
+    </div>
+</form>
 
 <script>
     function printMsg(){

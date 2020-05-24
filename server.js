@@ -15,7 +15,7 @@ const db = mysql.createConnection({
     password    : 'Root@123',
     database    : 'nodedb'
 })
-
+const PORT=process.env.PORT||5000;
 //connect
 db.connect((err) => {
     if(err) throw err;
@@ -86,6 +86,6 @@ app.get('/delete', (req, res) =>{
     })
 })
 
-app.listen(3000, () => {
-    console.log("Running on port 3000")
+app.listen(PORT, () => {
+    console.log("Running on port ${PORT}")
 })
