@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Update an existing Team</h2>
+    <label for="teamid"> <span id="spanid">ID&nbsp;</span>
+        <select name="teamid" id="teamid" style="width:60px;">
+            <% ids.forEach(id => { %>
+            <option class="option" value="<%= id.ID %>"> <%= id.ID %>  </optiion>
+            <% }); %>
+        </select>
+    </label>
+    <button onclick="addInputFields()">Select</button>
+    <div id="addinput"></div>
+</div>
+
+<!-- FIXME: Below ejs is not parsed by javascript
+html += '<%- include('_form_fields') %>' -->
+<script>
+    function addInputFields(){
+        let html = '';
+        html += '<div class="container">'
+        html += '<h2 class="h2"> Edit</h2>'
+        html += '<div class="input">'
+        html += '<label for="title1">Title</label>'
+        html += '<input type="text" name="title" id="title1">'
+        html += '</div>'
+        html += '<div class="input">'
+        html += '<label for="summary1">Summary</label>'
+        html += '<textarea name="summary" id="summary1" cols="30" rows="10"></textarea>'
+        html += '</div>'
+        html += '<div id="addbuttons">'
+        html += '<a id="canceladd" href="/">Cancel</a>'
+        html += '<button type="submit">Add</button>'
+        html += '</div>'
+        document.getElementById('addinput').innerHTML = html
+    }
+</script>

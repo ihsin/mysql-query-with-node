@@ -86,6 +86,14 @@ app.get('/delete', (req, res) =>{
     })
 })
 
+app.get('/update', (req, res) => {
+    const sql = "SELECT ID FROM Teams";
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.render('update',{ids : result});
+    })
+})
+
 app.listen(PORT, () => {
     console.log("Running on port ${PORT}")
 })
