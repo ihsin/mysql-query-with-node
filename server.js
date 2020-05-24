@@ -66,13 +66,24 @@ app.get('/view', (req,res) => {
     const sql = "SELECT * FROM Teams";
     db.query(sql, (err, result) => {
         if (err) throw err;
-        console.log(result[0].Title);
         res.render('view',{table : result});
     })
 })
 
+app.post('/delete', (req, res) => {
+    const sql = "DELETE FROM Teams WHERE ID=?";
+    db.query(sql, req.body.teamid, (err, result) => {
+        if (err) throw err;
+        res.status(400);
+    })
+})
+
 app.get('/delete', (req, res) =>{
-    res.render('delete');
+    const sql = "SELECT ID FROM Teams";
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.render('delete',{ids : result});
+    })
 })
 
 app.listen(3000, () => {
