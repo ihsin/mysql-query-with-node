@@ -1,14 +1,16 @@
 <div class="container">
     <h2>Update an existing Team</h2>
+    <form action="/update" method="POST">
     <label for="teamid"> <span id="spanid">ID&nbsp;</span>
         <select name="teamid" id="teamid" style="width:60px;">
             <% ids.forEach(id => { %>
-            <option class="option" value="<%= id.ID %>"> <%= id.ID %>  </optiion>
+            <option class="option" name="id" value="<%= id.ID %>"> <%= id.ID %>  </optiion>
             <% }); %>
         </select>
     </label>
-    <button onclick="addInputFields()">Select</button>
-    <div id="addinput"></div>
+    <button type="button" onclick="addInputFields()">Select</button>
+        <div id="addinput"></div>
+    </form>
 </div>
 
 <!-- FIXME: Below ejs is not parsed by javascript
@@ -27,9 +29,10 @@ html += '<%- include('_form_fields') %>' -->
         html += '<textarea name="summary" id="summary1" cols="30" rows="10"></textarea>'
         html += '</div>'
         html += '<div id="addbuttons">'
-        html += '<a id="canceladd" href="/">Cancel</a>'
+        html += '<a id="canceladd" href="/">Cancel</a>&nbsp;'
         html += '<button type="submit">Add</button>'
         html += '</div>'
+        html += '</div>';
         document.getElementById('addinput').innerHTML = html
     }
 </script>

@@ -48,11 +48,11 @@ app.get('/createtableteam', (req,res) => {
 
 //Insert
 app.post('/add', (req,res) => {
+    console.log(req.body)
     let team = {Title: req.body.title, Summary: req.body.summary}
     const sql = "INSERT INTO Teams SET ?";
     db.query(sql, team, (err, result) => {
         if (err) throw err;
-        console.log(result);
         res.render('add');
     })
 })
@@ -94,6 +94,21 @@ app.get('/update', (req, res) => {
     })
 })
 
+app.post('/update', (req,res) => {
+    const sql = `UPDATE Teams SET Title='${req.body.title}', Summary='${req.body.summary}' WHERE ID='${req.body.teamid}'`;
+    // console.log(req.body)
+    // console.log(sql);
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+    })
+    const sqlid = "SELECT ID FROM Teams";
+    db.query(sqlid, (err, result) => {
+        if (err) throw err;
+        res.render('update',{ids : result});
+    })
+})
+
 app.listen(PORT, () => {
-    console.log("Running on port ${PORT}")
+    console.log("Running on port " + PORT)
 })
