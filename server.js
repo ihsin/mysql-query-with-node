@@ -10,7 +10,7 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded())
 const db = mysql.createConnection({
-    host    : 'localhost',
+    host    : 'db',
     user    : 'root',
     password    : 'Root@123',
     database    : 'nodedb'
